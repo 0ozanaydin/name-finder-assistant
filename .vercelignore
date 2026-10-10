@@ -1,2 +1,5 @@
 data/
 .env
+local-server.js
+start.bat
+start.sh
