@@ -1,0 +1,9 @@
+{
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/handler?p=:path*" }
+  ],
+  "functions": {
+    "api/handler.js": { "maxDuration": 60, "includeFiles": "game-context.md" }
+  }
+}

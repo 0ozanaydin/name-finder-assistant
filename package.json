@@ -1,0 +1,10 @@
+{
+  "name": "isim-avcisi",
+  "version": "2.0.0",
+  "description": "Oyun ismi bulmak için Gemini destekli hızlı puanlama aracı (yerel + Vercel)",
+  "main": "server.js",
+  "scripts": { "start": "node server.js" },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED",
+  "private": true
+}

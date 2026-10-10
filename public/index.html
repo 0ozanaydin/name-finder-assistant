@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>İsim Avcısı</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">🏥 İsim Avcısı</div>
+    <nav id="tabs">
+      <button data-tab="discover" class="active">Keşfet</button>
+      <button data-tab="history">Geçmiş <span id="cntHistory" class="badge">0</span></button>
+      <button data-tab="favs">Favoriler <span id="cntFavs" class="badge">0</span></button>
+      <button data-tab="settings">Ayarlar</button>
+      <button id="logoutBtn" class="hidden" type="button">Çıkış</button>
+    </nav>
+  </header>
+
+  <div id="login" class="login hidden">
+    <form id="loginForm" class="login-box">
+      <h2>🏥 İsim Avcısı</h2>
+      <input id="pw" type="password" placeholder="Şifre" autocomplete="current-password">
+      <button type="submit">Giriş</button>
+      <div id="loginErr" class="err hidden"></div>
+    </form>
+  </div>
+
+  <div id="banner" class="banner hidden"></div>
+
+  <main>
+    <!-- KEŞFET -->
+    <section id="tab-discover" class="tab">
+      <div class="card" id="card">
+        <div class="meta">
+          <span id="style" class="chip"></span>
+          <span id="queueInfo" class="muted"></span>
+        </div>
+        <h2 id="name">…</h2>
+        <p id="note" class="note"></p>
+        <div id="stars" class="stars" title="Yıldıza tıkla"></div>
+        <div id="cardError" class="err hidden"></div>
+      </div>
+
+      <form id="form" autocomplete="off">
+        <input id="input" type="text" placeholder="Yorumun + 1-5 arası puan  (örn: havalı ama uzun 4)" autofocus>
+      </form>
+      <div class="hint" id="hint">
+        <kbd>Enter</kbd> kaydet · <kbd>Shift</kbd>+<kbd>Enter</kbd> kaydet + favorile · <kbd>Esc</kbd> atla · Puan (1-5) yazının başında ya da sonunda olabilir
+      </div>
+      <div class="actions">
+        <button id="favBtn" type="button">♡ Favori</button>
+        <button id="skipBtn" type="button">Atla →</button>
+      </div>
+      <div id="last" class="last hidden"></div>
+    </section>
+
+    <!-- GEÇMİŞ -->
+    <section id="tab-history" class="tab hidden">
+      <div class="toolbar">
+        <input id="histSearch" type="search" placeholder="İsim ya da yorumda ara…">
+        <select id="histSort">
+          <option value="new">En yeni</option>
+          <option value="high">Puan: yüksekten düşüğe</option>
+          <option value="low">Puan: düşükten yükseğe</option>
+        </select>
+        <label class="check"><input type="checkbox" id="histHideSkipped" checked> Atlananları gizle</label>
+      </div>
+      <div id="styleStats" class="stats"></div>
+      <div id="histList" class="list"></div>
+    </section>
+
+    <!-- FAVORİLER -->
+    <section id="tab-favs" class="tab hidden">
+      <div id="favList" class="list"></div>
+      <div class="toolbar"><button id="copyFavs" type="button">Favorileri kopyala</button></div>
+    </section>
+
+    <!-- AYARLAR -->
+    <section id="tab-settings" class="tab hidden">
+      <div class="panel">
+        <h3>Öneri ayarları</h3>
+        <label>Dil
+          <select id="setLang">
+            <option value="mix">Türkçe + İngilizce karışık</option>
+            <option value="tr">Sadece Türkçe</option>
+            <option value="en">Sadece İngilizce</option>
+          </select>
+        </label>
+        <label>Yönlendirme (isteğe bağlı)
+          <input id="setDir" type="text" placeholder="örn: daha kısa, daha komik, korku tonu olmasın">
+        </label>
+        <button id="saveSettings" type="button">Kaydet ve yeni isimler getir</button>
+      </div>
+      <div class="panel">
+        <h3>Oyun bağlamı</h3>
+        <p class="muted">Gemini'ye her istekte gönderilen oyun bilgisi. Premise'i ne kadar iyi yazarsan öneriler o kadar isabetli olur.</p>
+        <textarea id="setCtx" rows="18"></textarea>
+        <button id="saveCtx" type="button">Bağlamı kaydet</button>
+      </div>
+      <div class="panel">
+        <h3>Durum ve yedek</h3>
+        <p id="sysInfo" class="muted"></p>
+        <button id="exportBtn" type="button">Verileri indir (yedek, JSON)</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
